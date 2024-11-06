@@ -16,15 +16,17 @@ interface IProps {
  */
 
 const TodoData = (props: IProps) => {
-    const { todos, owner = "unknown" } = props;
+    const { todos } = props;
     //Default owner
     return (
         <div>
-            <div>Owner: {owner}</div>
             {todos.map((item) => {
                 return (
                     <div key={item.id}>
-                        <div style={{ padding: "10px 0" }}>{item.title}</div>
+                        <div style={{ padding: "10px 0" }}>
+                            {item.id} - {item.title}
+                            &nbsp;&nbsp;&nbsp;<button>Delete</button>
+                        </div>
                     </div>
                 );
             })}
