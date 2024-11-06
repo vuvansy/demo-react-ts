@@ -31,6 +31,10 @@ const TodoList = () => {
     const addNewTodo = (todo: ITodo) => {
         setListTodo([...listTodo, todo]);
     };
+    const deleteTodo = (id: number) => {
+        const newList = listTodo.filter((item) => item.id !== id);
+        setListTodo(newList);
+    };
     return (
         <div
             style={{
@@ -56,6 +60,7 @@ const TodoList = () => {
             <TodoInput addNewTodo={addNewTodo} />
             <TodoData
                 todos={listTodo}
+                deleteTodo={deleteTodo}
                 //owner={"Admin"}
                 //age={20}
                 //isDev={true}

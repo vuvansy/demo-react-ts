@@ -7,6 +7,7 @@ interface IProps {
     owner?: string; //Optional Props(Thuộc tính có thể truyền hoặc không)
     age?: number;
     isDev?: boolean;
+    deleteTodo: (v: number) => void;
 }
 
 /**
@@ -16,7 +17,7 @@ interface IProps {
  */
 
 const TodoData = (props: IProps) => {
-    const { todos } = props;
+    const { todos, deleteTodo } = props;
     //Default owner
     return (
         <div>
@@ -25,7 +26,10 @@ const TodoData = (props: IProps) => {
                     <div key={item.id}>
                         <div style={{ padding: "10px 0" }}>
                             {item.id} - {item.title}
-                            &nbsp;&nbsp;&nbsp;<button>Delete</button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button onClick={() => deleteTodo(item.id)}>
+                                Delete
+                            </button>
                         </div>
                     </div>
                 );
